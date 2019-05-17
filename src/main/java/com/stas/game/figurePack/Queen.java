@@ -3,7 +3,9 @@ package com.stas.game.figurePack;
 import com.stas.game.Position;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Класс, реализующий фигуру Ферзь.
@@ -20,130 +22,32 @@ public class Queen extends Figure {
     Queen(String name, int x, int y, String color) {
         super(name, x, y, color);
     }
-
     public List<Position> aviableMove() {
-        List<Position> positionList = new ArrayList<>();
+        Set<Position> positionList = new HashSet<>();
+        iterateMove(positionList, 1, 0);
+        iterateMove(positionList, 0, 1);
+        iterateMove(positionList, -1, 0);
+        iterateMove(positionList, 0, -1);
+        iterateMove(positionList, 1, 1);
+        iterateMove(positionList, -1, -1);
+        iterateMove(positionList, -1, 1);
+        iterateMove(positionList, -1, 1);
+        List<Position> positionList1 = new ArrayList<>(positionList);
+        return positionList1;
 
-        for (int i = 1; i <= 7; i++) {
-            if ((x + i) <= 7 && f[x + i][y] == null) {
-                positionList.add(new Position((x + i), y));
-            } else break;
-        }
-        for (int i = 1; i <= 7; i++) {
-            if ((x - i) >= 0 && f[x - i][y] == null) {
-                positionList.add(new Position((x - i), y));
-            } else break;
-        }
-        for (int i = 1; i <= 7; i++) {
-            if ((y + i) <= 7 && f[x][y + i] == null) {
-                positionList.add(new Position(x, (y + i)));
-            } else break;
-        }
-        for (int i = 1; i <= 7; i++) {
-            if ((y - i) >= 0 && f[x][y - i] == null) {
-                positionList.add(new Position(x, (y - i)));
-            } else break;
-        }
-        for (int i = 1; i <= 7; i++) {
-            if ((x + i) <= 7 && (y + i) <= 7 && f[x + i][y + i] == null) {
-                positionList.add(new Position((x + i), (y + i)));
-            } else break;
-        }
-        for (int i = 1; i <= 7; i++) {
-            if ((x - i) >= 0 && (y - i) >= 0 && f[x - i][y - i] == null) {
-                positionList.add(new Position((x - i), (y - i)));
-            } else break;
-        }
-        for (int i = 1; i <= 7; i++) {
-            if ((x - i) >= 0 && (y + i) <= 7 && f[x - i][y + i] == null) {
-                positionList.add(new Position((x - i), (y + i)));
-            } else break;
-        }
-        for (int i = 1; i <= 7; i++) {
-            if ((x + i) <= 7 && (y - i) >= 0 && f[x + i][y - i] == null) {
-                positionList.add(new Position((x + i), (y - i)));
-            } else break;
-        }
-        return positionList;
+    }    public List<Position> aviableEat() {
+        Set<Position> positionList = new HashSet<>();
+        iterateEat(positionList, 1, 0);
+        iterateEat(positionList, 0, 1);
+        iterateEat(positionList, -1, 0);
+        iterateEat(positionList, 0, -1);
+        iterateEat(positionList, 1, 1);
+        iterateEat(positionList, -1, -1);
+        iterateEat(positionList, -1, 1);
+        iterateEat(positionList, -1, 1);
+        List<Position> positionList1 = new ArrayList<>(positionList);
+        return positionList1;
+
     }
 
-    @Override
-    public List<Position> aviableEat() {
-        List<Position> positionList = new ArrayList<>();
-        for (int i = 1; i <= 7; i++) {
-            if ((x + i) <= 7 && f[x + i][y] != null && getColor().equals(f[x + i][y].getColor())) {
-                break;
-            }
-            if ((x + i) <= 7 && f[x + i][y] != null && !getColor().equals(f[x + i][y].getColor())) {
-                positionList.add(new Position((x + i), y));
-                break;
-            }
-        }
-        for (int i = 1; i <= 7; i++) {
-
-            if ((x - i) >= 0 && f[x - i][y] != null && getColor().equals(f[x - i][y].getColor())) {
-                break;
-            }
-            if ((x - i) >= 0 && f[x - i][y] != null && !getColor().equals(f[x - i][y].getColor())) {
-                positionList.add(new Position((x - i), y));
-                break;
-            }
-        }
-        for (int i = 1; i <= 7; i++) {
-            if ((y + i) <= 7 && f[x][y + i] != null && getColor().equals(f[x][y + i].getColor())) {
-                break;
-            }
-            if ((y + i) <= 7 && f[x][y + i] != null && !getColor().equals(f[x][y + i].getColor())) {
-                positionList.add(new Position(x, (y + i)));
-                break;
-            }
-        }
-        for (int i = 1; i <= 7; i++) {
-            if ((y - i) >= 0 && f[x][y - i] != null && getColor().equals(f[x][y - i].getColor())) {
-                break;
-            }
-            if ((y - i) >= 0 && f[x][y - i] != null && !getColor().equals(f[x][y - i].getColor())) {
-                positionList.add(new Position(x, (y - i)));
-                break;
-            }
-        }
-        for (int i = 1; i <= 7; i++) {
-            if ((x + i) <= 7 && (y + i) <= 7 && f[x + i][y + i] != null && getColor().equals(f[x + i][y + i].getColor())) {
-                break;
-            }
-            if ((x + i) <= 7 && (y + i) <= 7 && f[x + i][y + i] != null && !getColor().equals(f[x + i][y + i].getColor())) {
-                positionList.add(new Position((x + i), (y + i)));
-                break;
-            }
-        }
-        for (int i = 1; i <= 7; i++) {
-            if ((x - i) >= 0 && (y - i) >= 0 && f[x - i][y - i] != null && getColor().equals(f[x - i][y - i].getColor())) {
-                break;
-            }
-            if ((x - i) >= 0 && (y - i) >= 0 && f[x - i][y - i] != null && !getColor().equals(f[x - i][y - i].getColor())) {
-                positionList.add(new Position((x - i), (y - i)));
-                break;
-            }
-        }
-        for (int i = 1; i <= 7; i++) {
-
-            if ((x - i) >= 0 && (y + i) <= 7 && f[x - i][y + i] != null && getColor().equals(f[x - i][y + i].getColor())) {
-                break;
-            }
-            if ((x - i) >= 0 && (y + i) <= 7 && f[x - i][y + i] != null && !getColor().equals(f[x - i][y + i].getColor())) {
-                positionList.add(new Position((x - i), (y + i)));
-                break;
-            }
-        }
-        for (int i = 1; i <= 7; i++) {
-            if ((x + i) <= 7 && (y - i) >= 0 && f[x + i][y - i] != null && getColor().equals(f[x + i][y - i].getColor())) {
-                break;
-            }
-            if ((x + i) <= 7 && (y - i) >= 0 && f[x + i][y - i] != null && !getColor().equals(f[x + i][y - i].getColor())) {
-                positionList.add(new Position((x + i), (y - i)));
-                break;
-            }
-        }
-        return positionList;
-    }
 }

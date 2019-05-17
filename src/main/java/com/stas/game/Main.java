@@ -19,7 +19,7 @@ public class Main {
                 FigureFactory.getInstance().createFigure(FigureList.BISHOP, "bishopRight", 7, 5, "White"),
                 FigureFactory.getInstance().createFigure(FigureList.ROOK, "rookLeft", 7, 0, "White"),
                 FigureFactory.getInstance().createFigure(FigureList.ROOK, "rookRight", 7, 7, "White"),
-               // FigureFactory.getInstance().createFigure(FigureList.PAWN, "pawnOne", 6, 0, "White"),
+                FigureFactory.getInstance().createFigure(FigureList.PAWN, "pawnOne", 6, 0, "White"),
                 FigureFactory.getInstance().createFigure(FigureList.PAWN, "pawnTwo", 6, 1, "White"),
                 FigureFactory.getInstance().createFigure(FigureList.PAWN, "pawnThree", 6, 2, "White"),
                 FigureFactory.getInstance().createFigure(FigureList.PAWN, "pawnFour", 6, 3, "White"),
