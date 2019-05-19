@@ -27,11 +27,15 @@ public class Field {
     }
 
     public void addFigure(Figure figure) {
-        figuresTable[figure.getX()][figure.getY()] = figure;
+        figuresTable[figure.getP().getX()][figure.getP().getY()] = figure;
     }
 
-    public Figure getFigure(int x, int y) {
-        return figuresTable[x][y];
+    public Figure getFigure(Position p) {
+        return figuresTable[p.getX()][p.getY()];
+    }
+
+    public void deleteFigure(Position p){
+        figuresTable[p.getX()][p.getY()]=null;
     }
 }
 

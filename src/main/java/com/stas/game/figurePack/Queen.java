@@ -19,8 +19,8 @@ public class Queen extends Figure {
 
     private String ch = "Ф";
 
-    Queen(String name, int x, int y, String color) {
-        super(name, x, y, color);
+    Queen(String name,Position p, String color) {
+        super(name,p, color);
     }
     public List<Position> aviableMove() {
         Set<Position> positionList = new HashSet<>();

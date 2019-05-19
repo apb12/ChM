@@ -19,8 +19,8 @@ public class Bishop extends Figure {
 
     private String ch = "C";
 
-    Bishop(String name, int x, int y, String color) {
-        super(name, x, y, color);
+    Bishop(String name, Position p, String color) {
+        super(name,p, color);
     }
 
 public List<Position> aviableMove() {

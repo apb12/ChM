@@ -20,7 +20,7 @@ public class Game {
      * @return true ,если по введеным пользователем координатам можно сходить/бить фигуру.
      */
     public static boolean validAction(Position a, Position b, Function<Figure, List> method) {
-        Figure fig = Field.getInstance().getFigure(a.getX(), a.getY());
+        Figure fig = Field.getInstance().getFigure(a);
         List list = method.apply(fig);
         return list.stream().anyMatch(a1 -> Objects.equals(a1, b));
     }
@@ -33,11 +33,10 @@ public class Game {
      */
     public static void moveFigure(Position from, Position to) {
         Figure temp;
-        temp = Field.getInstance().getFigure(from.getX(), from.getY());
-        temp.setX(to.getX());
-        temp.setY(to.getY());
+        temp = Field.getInstance().getFigure(from);
+        temp.setP(to);
         Field.getInstance().addFigure(temp);
-        Field.getInstance().getFiguresTable()[from.getX()][from.getY()] = null;
+        Field.getInstance().deleteFigure(from);
     }
 
     /**
@@ -48,7 +47,7 @@ public class Game {
      */
 
     public static void eatFigure(Position from, Position to) {
-        Field.getInstance().getFiguresTable()[to.getX()][to.getY()] = null;
+        Field.getInstance().deleteFigure(to);
         moveFigure(from, to);
     }
 }

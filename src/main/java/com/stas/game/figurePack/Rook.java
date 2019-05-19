@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.function.Function;
 
 /**
  * Класс,реализующий фигуру Ладья.
@@ -18,16 +19,16 @@ public class Rook extends Figure {
 
     private String ch = "Л";
 
-    Rook(String name, int x, int y, String color) {
-        super(name, x, y, color);
+    Rook(String name,Position p, String color) {
+        super(name, p, color);
     }
 
     public List<Position> aviableMove() {
         Set<Position> positionList = new HashSet<>();
         iterateMove(positionList, 1, 0);
-        iterateMove(positionList, 0, 1);
-        iterateMove(positionList, -1, 0);
-        iterateMove(positionList, 0, -1);
+        iterateMove( positionList,0, 1);
+        iterateMove(positionList,-1, 0);
+        iterateMove( positionList,0, -1);
         List<Position> positionList1 = new ArrayList<>(positionList);
         return positionList1;
 

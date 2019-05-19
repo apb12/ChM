@@ -1,5 +1,7 @@
 package com.stas.game.figurePack;
 
+import com.stas.game.Position;
+
 /**
  * Класс фабрика по произодству фигур.
  */
@@ -15,26 +17,26 @@ public class FigureFactory {
         return instance;
     }
 
-    public Figure createFigure(FigureList figureList, String name, int x, int y, String color) {
+    public Figure createFigure(FigureList figureList, String name, Position p, String color) {
         Figure figure = null;
         switch (figureList) {
             case KING:
-                figure = new King(name, x, y, color);
+                figure = new King(name,p, color);
                 break;
             case QUEEN:
-                figure = new Queen(name, x, y, color);
+                figure = new Queen(name, p, color);
                 break;
             case PAWN:
-                figure = new Pawn(name, x, y, color);
+                figure = new Pawn(name, p, color);
                 break;
             case BISHOP:
-                figure = new Bishop(name, x, y, color);
+                figure = new Bishop(name, p, color);
                 break;
             case KNIGHT:
-                figure = new Knight(name, x, y, color);
+                figure = new Knight(name,p, color);
                 break;
             case ROOK:
-                figure = new Rook(name, x, y, color);
+                figure = new Rook(name,p, color);
                 break;
         }
         return figure;

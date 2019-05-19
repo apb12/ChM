@@ -17,8 +17,8 @@ public class Pawn extends Figure {
         return (getColor().equalsIgnoreCase("White")) ? ch : ch.toLowerCase();
     }
 
-    Pawn(String name, int x, int y, String color) {
-        super(name, x, y, color);
+    Pawn(String name,Position p, String color) {
+        super(name,p, color);
     }
 
     @Override
@@ -26,13 +26,13 @@ public class Pawn extends Figure {
         List<Position> positionList = new ArrayList<>();
         for (int i = 1; i < 3; i++) {
             if (getColor().equalsIgnoreCase("White")) {
-                if (x >= 1 && f[x - i][y] != null) {
+                if (p.getX() >= 1 && f[p.getX() - i][p.getY()] != null) {
                     break;
-                } else positionList.add(new Position((x - i), y));
+                } else positionList.add(new Position((p.getX() - i), p.getY()));
             } else {
-                if (x <= 6 && f[x + i][y] != null) {
+                if (p.getX() <= 6 && f[p.getX() + i][p.getY()] != null) {
                     break;
-                } else positionList.add(new Position((x + i), y));
+                } else positionList.add(new Position((p.getX() + i), p.getY()));
             }
         }
         return positionList;
@@ -43,15 +43,15 @@ public class Pawn extends Figure {
         List<Position> positionList = new ArrayList<>();
         for (int i = -1; i < 2; i++) {
             if (i == 0) continue;
-            if ((y + i) == -1 || (y + i) == 8) continue;
-            if (f[x][y].getColor().equalsIgnoreCase("White")) {
-                if (x >= 1 && f[x - 1][y + i] != null && !getColor().equals(f[x - 1][y + i].getColor())) {
-                    positionList.add(new Position((x - 1), (y + i)));
+            if ((p.getY() + i) == -1 || (p.getY() + i) == 8) continue;
+            if (getColor().equalsIgnoreCase("White")) {
+                if (p.getX() >= 1 && f[p.getX() - 1][p.getY() + i] != null && !getColor().equals(f[p.getX() - 1][p.getY() + i].getColor())) {
+                    positionList.add(new Position((p.getX() - 1), (p.getY() + i)));
                 }
             }
-            if (f[x][y].getColor().equalsIgnoreCase("Black")) {
-                if (x <= 6 && f[x + 1][y + i] != null && !getColor().equals(f[x + 1][y + i].getColor())) {
-                    positionList.add(new Position((x + 1), (y + i)));
+            if (getColor().equalsIgnoreCase("Black")) {
+                if (p.getX() <= 6 && f[p.getX() + 1][p.getY() + i] != null && !getColor().equals(f[p.getX() + 1][p.getY() + i].getColor())) {
+                    positionList.add(new Position((p.getX() + 1), (p.getY() + i)));
                 }
             }
         }

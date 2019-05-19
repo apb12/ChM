@@ -25,7 +25,7 @@ public class Printer {
          * @param p список фигур,доступных для битья.
          */
         for (Position aP : p) {
-            System.out.println("Вы можете съесть фигуру: " + Field.getInstance().getFigure(aP.getX(), aP.getY()).getName());
+            System.out.println("Вы можете съесть фигуру: " + Field.getInstance().getFigure(aP).getName());
         }
     }
 }

@@ -3,6 +3,7 @@ package com.stas.game.figurePack;
 import com.stas.game.Field;
 import com.stas.game.Position;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -12,7 +13,16 @@ import java.util.Set;
 
 public abstract class Figure {
     protected Figure[][] f = Field.getInstance().getFiguresTable();
-    protected int x, y;
+
+    public Position getP() {
+        return p;
+    }
+
+    public void setP(Position p) {
+        this.p = p;
+    }
+
+    protected Position p;
     private String ch;
     private String name;
     private String color;
@@ -25,29 +35,13 @@ public abstract class Figure {
         return color;
     }
 
-    public int getX() {
-        return x;
-    }
-
-    public void setX(int x) {
-        this.x = x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public void setY(int y) {
-        this.y = y;
-    }
 
     public Figure() {
     }
 
-    public Figure(String name, int x, int y, String color) {
+    public Figure(String name,Position p, String color) {
 
-        this.x = x;
-        this.y = y;
+        this.p=p;
         this.color = color;
         this.name = name;
     }
@@ -67,21 +61,21 @@ public abstract class Figure {
 
     abstract public List<Position> aviableEat();
 
-    public void iterateMove(Set<Position> positions, int px, int py) {
+    public void iterateMove(Set<Position> positions,int px, int py) {
         for (int i = 1; i <= 7; i++) {
-            int mx = x + px * i;
-            int my = y + py * i;
+            int mx = p.getX() + px * i;
+            int my = p.getY() + py * i;
             if (mx > -1 && mx < 8 && my > -1 && my < 8 && f[mx][my] == null)
                 positions.add(new Position(mx, my));
             else break;
         }
-        positions.remove(new Position(x, y));
+        positions.remove(new Position(p.getX(),p.getY()));
     }
 
     public void iterateEat(Set<Position> positions, int px, int py) {
         for (int i = 1; i <= 7; i++) {
-            int mx = x + px * i;
-            int my = y + py * i;
+            int mx = p.getX() + px * i;
+            int my = p.getY() + py * i;
             if (mx > -1 && mx < 8 && my > -1 && my < 8 && f[mx][my] != null && getColor().equals(f[mx][my].getColor())) {
                 break;
             }
@@ -89,7 +83,7 @@ public abstract class Figure {
                 positions.add(new Position(mx, my));
                 break;
             }
-            positions.remove(new Position(x, y));
+            positions.remove(new Position(p.getX(), p.getY()));
         }
 
     }

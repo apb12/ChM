@@ -53,9 +53,10 @@ public class Menu {
                 String s = sc1.nextLine();
                 int tempX = Interpritator.reverseInter(s).get(0);
                 int tempY = Interpritator.reverseInter(s).get(1);
-                out.println("Для фигуры " + Field.getInstance().getFigure(tempX, tempY).getName());
-                Printer.printPosition(Field.getInstance().getFigure(tempX, tempY).aviableMove());
-                Printer.printEat(Field.getInstance().getFigure(tempX, tempY).aviableEat());
+                Position tempP=new Position(tempX,tempY);
+                out.println("Для фигуры " + Field.getInstance().getFigure(tempP).getName());
+                Printer.printPosition(Field.getInstance().getFigure(tempP).aviableMove());
+                Printer.printEat(Field.getInstance().getFigure(tempP).aviableEat());
                 b = false;
             } catch (Exception e) {
                 e.printStackTrace();

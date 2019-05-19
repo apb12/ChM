@@ -17,8 +17,8 @@ public class King extends Figure {
     private String ch = "Z";
 
 
-    King(String name, int x, int y, String color) {
-        super(name, x, y, color);
+    King(String name,Position p, String color) {
+        super(name,p, color);
     }
 
     public List<Position> aviableMove() {
@@ -26,12 +26,12 @@ public class King extends Figure {
         for (int i = -1; i < 2; i++) {
             for (int j = -1; j < 2; j++) {
                 if (i == 0 && j == 0) continue;
-                if ((x + i) == -1 || (x + i) == 8) continue;
-                if ((y + j) == -1 || (y + j) == 8) continue;
+                if ((p.getX() + i) == -1 || (p.getX() + i) == 8) continue;
+                if ((p.getY() + j) == -1 || (p.getY() + j) == 8) continue;
 
-                if (f[x + i][y + j] == null)
+                if (f[p.getX() + i][p.getY() + j] == null)
 
-                    positionList.add(new Position((x + i), (y + j)));
+                    positionList.add(new Position((p.getX() + i), (p.getY() + j)));
             }
         }
         return positionList;
@@ -42,10 +42,10 @@ public class King extends Figure {
         for (int i = -1; i < 2; i++) {
             for (int j = -1; j < 2; j++) {
                 if (i == 0 && j == 0) continue;
-                if ((x + i) == -1 || (x + i) == 8) continue;
-                if ((y + j) == -1 || (y + j) == 8) continue;
-                if (f[x + i][y + j] != null && !f[x][y].getColor().equals(f[x + i][y + j].getColor()))
-                    positionList.add(new Position((x + i), (y + j)));
+                if ((p.getX() + i) == -1 || (p.getX() + i) == 8) continue;
+                if ((p.getY() + j) == -1 || (p.getY() + j) == 8) continue;
+                if (f[p.getX() + i][p.getY() + j] != null && !f[p.getX()][p.getY()].getColor().equals(f[p.getX() + i][p.getY() + j].getColor()))
+                    positionList.add(new Position((p.getX() + i), (p.getY() + j)));
             }
         }
         return positionList;
