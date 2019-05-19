@@ -1,9 +1,9 @@
 # CheckMate
 Сборка проекта :
 
-git clone https://github.com/apb12/CheckMate
+git clone https://github.com/apb12/ChM
 
-cd CheckMate
+cd ChM
 
 mvn package
 
