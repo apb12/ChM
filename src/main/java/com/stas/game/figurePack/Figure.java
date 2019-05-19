@@ -3,8 +3,6 @@ package com.stas.game.figurePack;
 import com.stas.game.Field;
 import com.stas.game.Position;
 
-import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -39,9 +37,9 @@ public abstract class Figure {
     public Figure() {
     }
 
-    public Figure(String name,Position p, String color) {
+    public Figure(String name, Position p, String color) {
 
-        this.p=p;
+        this.p = p;
         this.color = color;
         this.name = name;
     }
@@ -61,7 +59,14 @@ public abstract class Figure {
 
     abstract public Set<Position> aviableEat();
 
-    public void iterateMove(Set<Position> positions,int px, int py) {
+    /**
+     * Метод ,записывающий возможные ходы по заданному шаблону.
+     *
+     * @param positions сет позиций.
+     * @param px        шаблон, задающий вектор проверки.
+     * @param py        шаблон, задающий вектор проверки.
+     */
+    public void iterateMove(Set<Position> positions, int px, int py) {
         for (int i = 1; i <= 7; i++) {
             int mx = p.getX() + px * i;
             int my = p.getY() + py * i;
@@ -69,9 +74,16 @@ public abstract class Figure {
                 positions.add(new Position(mx, my));
             else break;
         }
-        positions.remove(new Position(p.getX(),p.getY()));
+        positions.remove(new Position(p.getX(), p.getY()));
     }
 
+    /**
+     * Метод ,записывающий позиции фигур,которые можно бить,по заданному шаблону.
+     *
+     * @param positions сет позиций.
+     * @param px        шаблон, задающий вектор проверки.
+     * @param py        шаблон, задающий вектор проверки.
+     */
     public void iterateEat(Set<Position> positions, int px, int py) {
         for (int i = 1; i <= 7; i++) {
             int mx = p.getX() + px * i;

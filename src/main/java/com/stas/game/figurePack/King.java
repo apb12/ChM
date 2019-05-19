@@ -2,9 +2,7 @@ package com.stas.game.figurePack;
 
 import com.stas.game.Position;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 /**
@@ -19,8 +17,8 @@ public class King extends Figure {
     private String ch = "Z";
 
 
-    King(String name,Position p, String color) {
-        super(name,p, color);
+    King(String name, Position p, String color) {
+        super(name, p, color);
     }
 
     public Set<Position> aviableMove() {

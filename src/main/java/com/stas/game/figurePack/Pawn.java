@@ -17,8 +17,8 @@ public class Pawn extends Figure {
         return (getColor().equalsIgnoreCase("White")) ? ch : ch.toLowerCase();
     }
 
-    Pawn(String name,Position p, String color) {
-        super(name,p, color);
+    Pawn(String name, Position p, String color) {
+        super(name, p, color);
     }
 
     @Override

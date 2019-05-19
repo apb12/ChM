@@ -34,8 +34,8 @@ public class Field {
         return figuresTable[p.getX()][p.getY()];
     }
 
-    public void deleteFigure(Position p){
-        figuresTable[p.getX()][p.getY()]=null;
+    public void deleteFigure(Position p) {
+        figuresTable[p.getX()][p.getY()] = null;
     }
 }
 

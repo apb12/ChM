@@ -10,8 +10,8 @@ public class Main {
 
     public static void main(String[] args) {
         Field field = Field.getInstance();
-        List<Figure>  list = new ArrayList<>(Arrays.asList(
-                FigureFactory.getInstance().createFigure(FigureList.KING, "king", new Position(7,3), "White"),
+        List<Figure> list = new ArrayList<>(Arrays.asList(
+                FigureFactory.getInstance().createFigure(FigureList.KING, "king", new Position(7, 3), "White"),
                 FigureFactory.getInstance().createFigure(FigureList.QUEEN, "queen", new Position(7, 4), "White"),
                 FigureFactory.getInstance().createFigure(FigureList.KNIGHT, "knightLeft", new Position(7, 1), "White"),
                 FigureFactory.getInstance().createFigure(FigureList.KNIGHT, "knigtRight", new Position(7, 6), "White"),
@@ -27,9 +27,9 @@ public class Main {
                 FigureFactory.getInstance().createFigure(FigureList.BISHOP, "bishopRightB", new Position(0, 2), "Black"),
                 FigureFactory.getInstance().createFigure(FigureList.ROOK, "rookLeftB", new Position(0, 7), "Black"),
                 FigureFactory.getInstance().createFigure(FigureList.ROOK, "rookRightB", new Position(0, 0), "Black")));
-        for (int i = 0; i <8 ; i++) {
-            list.add(FigureFactory.getInstance().createFigure(FigureList.PAWN, "pawn"+i, new Position(6, i), "White"));
-            list.add(FigureFactory.getInstance().createFigure(FigureList.PAWN, "pawn"+(7-i)+"B", new Position(1, i), "Black"));
+        for (int i = 0; i < 8; i++) {
+            list.add(FigureFactory.getInstance().createFigure(FigureList.PAWN, "pawn" + i, new Position(6, i), "White"));
+            list.add(FigureFactory.getInstance().createFigure(FigureList.PAWN, "pawn" + (7 - i) + "B", new Position(1, i), "Black"));
         }
         list.forEach(field::addFigure);
         Gamer white = new Gamer("White");
