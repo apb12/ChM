@@ -3,7 +3,9 @@ package com.stas.game.figurePack;
 import com.stas.game.Position;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Класс, реализующий фигуру Король.
@@ -21,8 +23,8 @@ public class King extends Figure {
         super(name,p, color);
     }
 
-    public List<Position> aviableMove() {
-        List<Position> positionList = new ArrayList<>();
+    public Set<Position> aviableMove() {
+        Set<Position> positionList = new HashSet<>();
         for (int i = -1; i < 2; i++) {
             for (int j = -1; j < 2; j++) {
                 if (i == 0 && j == 0) continue;
@@ -37,8 +39,8 @@ public class King extends Figure {
         return positionList;
     }
 
-    public List<Position> aviableEat() {
-        List<Position> positionList = new ArrayList<>();
+    public Set<Position> aviableEat() {
+        Set<Position> positionList = new HashSet<>();
         for (int i = -1; i < 2; i++) {
             for (int j = -1; j < 2; j++) {
                 if (i == 0 && j == 0) continue;

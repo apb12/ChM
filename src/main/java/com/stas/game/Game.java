@@ -4,6 +4,7 @@ import com.stas.game.figurePack.Figure;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 import java.util.function.Function;
 
 /**
@@ -19,9 +20,9 @@ public class Game {
      * @param method aviableMove/aviableEat.
      * @return true ,если по введеным пользователем координатам можно сходить/бить фигуру.
      */
-    public static boolean validAction(Position a, Position b, Function<Figure, List> method) {
+    public static boolean validAction(Position a, Position b, Function<Figure, Set> method) {
         Figure fig = Field.getInstance().getFigure(a);
-        List list = method.apply(fig);
+        Set list = method.apply(fig);
         return list.stream().anyMatch(a1 -> Objects.equals(a1, b));
     }
 

@@ -50,23 +50,21 @@ public class Knight extends Figure {
         }
 
     }
-    public List<Position> aviableMove() {
+    public Set<Position> aviableMove() {
         Set<Position> positionList = new HashSet<>();
         iterateMove(positionList, 2, 0);
         iterateMove(positionList, -2, 0);
         iterateMove(positionList, 0, 2);
         iterateMove(positionList, 0, -2);
-        List<Position> positionList1 = new ArrayList<>(positionList);
-        return positionList1;
+        return positionList;
 
-    }  public List<Position> aviableEat() {
+    }  public Set<Position> aviableEat() {
         Set<Position> positionList = new HashSet<>();
         iterateEat(positionList, 2, 0);
         iterateEat(positionList, -2, 0);
         iterateEat(positionList, 0, 2);
-        iterateEat(positionList, 0, -2);
-        List<Position> positionList1 = new ArrayList<>(positionList);
-        return positionList1;
+        iterateEat(positionList, 0, -2);;
+        return positionList;
 
     }
 

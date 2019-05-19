@@ -53,13 +53,13 @@ public abstract class Figure {
     /**
      * Метод ,возвращающий список доступных ходов.
      */
-    abstract public List<Position> aviableMove();
+    abstract public Set<Position> aviableMove();
 
     /**
      * Метод ,возвращающий список доступных фигур для битья.
      */
 
-    abstract public List<Position> aviableEat();
+    abstract public Set<Position> aviableEat();
 
     public void iterateMove(Set<Position> positions,int px, int py) {
         for (int i = 1; i <= 7; i++) {

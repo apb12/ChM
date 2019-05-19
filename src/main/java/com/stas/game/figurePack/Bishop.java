@@ -23,25 +23,23 @@ public class Bishop extends Figure {
         super(name,p, color);
     }
 
-public List<Position> aviableMove() {
+public Set<Position> aviableMove() {
     Set<Position> positionList = new HashSet<>();
     iterateMove(positionList, 1, 1);
     iterateMove(positionList, -1, -1);
     iterateMove(positionList, -1, 1);
     iterateMove(positionList, -1, 1);
-    List<Position> positionList1 = new ArrayList<>(positionList);
-    return positionList1;
+    return positionList;
 
 }
 
-    public List<Position> aviableEat() {
+    public Set<Position> aviableEat() {
         Set<Position> positionList = new HashSet<>();
         iterateEat(positionList, 1, 1);
         iterateEat(positionList, -1, -1);
         iterateEat(positionList, -1, 1);
-        iterateEat(positionList, 1, -1);
-        List<Position> positionList1 = new ArrayList<>(positionList);
-        return positionList1;
+        iterateEat(positionList, 1, -1);;
+        return positionList;
 
     }
 }

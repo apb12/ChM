@@ -3,8 +3,8 @@ package com.stas.game.figurePack;
 
 import com.stas.game.Position;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Класс,реализующий фигуру Пешка.
@@ -22,8 +22,8 @@ public class Pawn extends Figure {
     }
 
     @Override
-    public List<Position> aviableMove() {
-        List<Position> positionList = new ArrayList<>();
+    public Set<Position> aviableMove() {
+        Set<Position> positionList = new HashSet<>();
         for (int i = 1; i < 3; i++) {
             if (getColor().equalsIgnoreCase("White")) {
                 if (p.getX() >= 1 && f[p.getX() - i][p.getY()] != null) {
@@ -39,8 +39,8 @@ public class Pawn extends Figure {
     }
 
     @Override
-    public List<Position> aviableEat() {
-        List<Position> positionList = new ArrayList<>();
+    public Set<Position> aviableEat() {
+        Set<Position> positionList = new HashSet<>();
         for (int i = -1; i < 2; i++) {
             if (i == 0) continue;
             if ((p.getY() + i) == -1 || (p.getY() + i) == 8) continue;

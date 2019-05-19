@@ -1,6 +1,7 @@
 package com.stas.game;
 
 import java.util.List;
+import java.util.Set;
 
 /**
  * Класс,реализующий методы распечатки ходов.
@@ -11,7 +12,7 @@ public class Printer {
      *
      * @param p список доступных ходов.
      */
-    public static void printPosition(List<Position> p) {
+    public static void printPosition(Set<Position> p) {
         if (p.size() >= 1) {
             for (Position aP : p) {
                 System.out.println("Доступные ходы :" + Interpritator.inter(aP.getX(), aP.getY()));
@@ -19,7 +20,7 @@ public class Printer {
         } else System.out.println("Нет доступных ходов");
     }
 
-    public static void printEat(List<Position> p) {
+    public static void printEat(Set<Position> p) {
         /**
          * Метод распечатывает имена фигур,доступных для битья.
          * @param p список фигур,доступных для битья.
